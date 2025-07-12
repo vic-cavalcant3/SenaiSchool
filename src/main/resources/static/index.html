@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SenaiSchool - Educação Profissional</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0056b3;
+      --secondary: #ff6b00;
+      --dark: #1a2a3a;
+      --light: #f8f9fa;
+      --accent: #00c853;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7fa;
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+    
+    /* Navbar personalizada */
+    .navbar {
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+    }
+    
+    .navbar-brand {
+      font-family: 'Russo One', sans-serif;
+      font-size: 1.8rem;
+      color: white !important;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-brand:hover {
+      transform: scale(1.05);
+    }
+    
+    .navbar-brand .logo-icon {
+      color: var(--secondary);
+      margin-right: 10px;
+      font-size: 2rem;
+    }
+    
+    .nav-link {
+      color: rgba(255, 255, 255, 0.85) !important;
+      font-weight: 500;
+      margin: 0 8px;
+      padding: 8px 15px !important;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: white !important;
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    .navbar-toggler {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 86, 179, 0.9), rgba(26, 42, 58, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: white;
+      transform: skewY(-3deg);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    
+    .btn-hero {
+      background-color: var(--secondary);
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 30px;
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+    }
+    
+    .btn-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 107, 0, 0.6);
+      color: white;
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      text-align: center;
+      height: 100%;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .feature-card h3 {
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: var(--dark);
+    }
+    
+    /* Stats Section */
+    .stats {
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      color: white;
+      position: relative;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--secondary);
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      padding: 80px 0;
+      background-color: #f8f9fa;
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin: 15px;
+      position: relative;
+    }
+    
+    .testimonial-card::before {
+      content: '"';
+      font-size: 5rem;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      opacity: 0.1;
+      font-family: serif;
+      line-height: 1;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .author-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+    
+    .author-info h5 {
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+    
+    .author-info p {
+      margin-bottom: 0;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 20px;
+    }
+    
+    .footer-logo {
+      font-family: 'Russo One', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    
+    .footer-logo .logo-icon {
+      color: var(--secondary);
+    }
+    
+    .footer-links h5 {
+      font-weight: 600;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .footer-links h5::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--secondary);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+      padding-left: 5px;
+    }
+    
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .animate-delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .animate-delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .navbar-brand {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-graduation-cap logo-icon"></i>
+        SenaiSchool
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="./index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./aluno.html">Alunos</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#">Cursos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Professores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contato</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container text-center">
+      <div class="hero-content">
+        <h1 class="animate__animated animate__fadeInDown">Transformando vidas através da educação</h1>
+        <p class="animate__animated animate__fadeIn animate-delay-1">A SenaiSchool oferece os melhores cursos profissionais para impulsionar sua carreira e desenvolver habilidades para o mercado de trabalho.</p>
+        <a href="./aluno.html" class="btn btn-hero animate__animated animate__fadeIn animate-delay-2">
+          Ver Alunos <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nossos Diferenciais</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="feature-card animate__animated animate__fadeInUp">
+            <i class="fas fa-chalkboard-teacher feature-icon"></i>
+            <h3>Professores Qualificados</h3>
+            <p>Nossa equipe é composta por profissionais experientes e altamente capacitados em suas áreas de atuação.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card animate__animated animate__fadeInUp animate-delay-1">
+            <i class="fas fa-laptop-code feature-icon"></i>
+            <h3>Infraestrutura Moderna</h3>
+            <p>Laboratórios equipados com tecnologia de ponta para proporcionar o melhor ambiente de aprendizagem.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="feature-card animate__animated animate__fadeInUp animate-delay-2">
+            <i class="fas fa-briefcase feature-icon"></i>
+            <h3>Conectando ao Mercado</h3>
+            <p>Parcerias com empresas para estágios e empregos, garantindo colocação profissional aos nossos alunos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number">+5000</div>
+            <div class="stat-label">Alunos Formados</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Cursos Disponíveis</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number">95%</div>
+            <div class="stat-label">Empregabilidade</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Anos de Experiência</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Depoimentos</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <p class="testimonial-text">A SenaiSchool mudou minha vida! O curso me deu as habilidades necessárias para conseguir meu primeiro emprego na área de TI.</p>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Aluno" class="author-img">
+              <div class="author-info">
+                <h5>Carlos Silva</h5>
+                <p>Ex-aluno de Desenvolvimento Web</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <p class="testimonial-text">A estrutura e a metodologia de ensino são excelentes. Os professores têm muita experiência prática para compartilhar.</p>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aluno" class="author-img">
+              <div class="author-info">
+                <h5>Ana Oliveira</h5>
+                <p>Aluna de Design Gráfico</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <p class="testimonial-text">Consegui uma promoção no trabalho após fazer um curso de especialização na SenaiSchool. Recomendo a todos!</p>
+            <div class="testimonial-author">
+              <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Aluno" class="author-img">
+              <div class="author-info">
+                <h5>Roberto Santos</h5>
+                <p>Aluno de Gestão Industrial</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <span class="footer-logo">
+            <i class="fas fa-graduation-cap logo-icon"></i>
+            SenaiSchool
+          </span>
+          <p>Transformando vidas através da educação profissional de qualidade.</p>
+          <div class="social-icons mt-3">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4">
+          <div class="footer-links">
+            <h5>Links</h5>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Sobre Nós</a></li>
+              <li><a href="#">Cursos</a></li>
+              <li><a href="#">Professores</a></li>
+              <li><a href="#">Contato</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="footer-links">
+            <h5>Cursos</h5>
+            <ul>
+              <li><a href="#">Tecnologia da Informação</a></li>
+              <li><a href="#">Mecânica Industrial</a></li>
+              <li><a href="#">Design Gráfico</a></li>
+              <li><a href="#">Eletrotécnica</a></li>
+              <li><a href="#">Gestão Empresarial</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="footer-links">
+            <h5>Contato</h5>
+            <ul>
+              <li><i class="fas fa-map-marker-alt me-2"></i> Av. Industrial, 123</li>
+              <li><i class="fas fa-phone me-2"></i> (11) 1234-5678</li>
+              <li><i class="fas fa-envelope me-2"></i> contato@senaisschool.com</li>
+              <li><i class="fas fa-clock me-2"></i> Seg-Sex: 8h às 21h</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SenaiSchool. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Adiciona classe de animação quando o elemento entra na viewport
+    document.addEventListener('DOMContentLoaded', function() {
+      const animateElements = document.querySelectorAll('.feature-card, .section-title, .testimonial-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      animateElements.forEach(el => observer.observe(el));
+      
+      // Efeito de digitação no título (opcional)
+      const heroTitle = document.querySelector('.hero h1');
+      if (heroTitle) {
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        const typingEffect = setInterval(() => {
+          if (i < text.length) {
+            heroTitle.textContent += text.charAt(i);
+            i++;
+          } else {
+            clearInterval(typingEffect);
+          }
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>
