@@ -198,8 +198,6 @@
         <th>Nome</th>
         <th>Email</th>
         <th>Telefone</th>
-        <!-- <th>Disciplina</th>
-        <th>Ações</th> -->
       </tr>
       </thead>
       <tbody id="professor-tbody">
@@ -234,7 +232,6 @@
               <td>${professor.nome}</td>
               <td>${professor.email}</td>
               <td>${professor.telefone || '-'}</td>
-              <td>${professor.disciplina}</td>
               <td>
                 <button class="btn btn-sm btn-danger" onclick="removerProfessor(${professor.id})">
                   <i class="fas fa-trash"></i>
@@ -258,7 +255,6 @@
         nome: document.getElementById('nome').value,
         email: document.getElementById('email').value,
         telefone: document.getElementById('telefone').value,
-        disciplina: document.getElementById('disciplina').value
       };
 
       fetch('http://localhost:8080/professores', {

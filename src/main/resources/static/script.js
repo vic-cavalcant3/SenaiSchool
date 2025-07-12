@@ -31,21 +31,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // Carregar alunos ao iniciar
   carregarAlunos();
 });
-
-// Função para remover aluno
-function removerAluno(id) {
-  if (confirm('Tem certeza que deseja remover este aluno?')) {
-    fetch(`http://localhost:8080/alunos/${id}`, {
-      method: 'DELETE'
-    })
-    .then(() => {
-      alert('Aluno removido com sucesso!');
-      document.getElementById('aluno-tbody').innerHTML = '';
-      document.dispatchEvent(new Event('DOMContentLoaded'));
-    })
-    .catch(error => {
-      console.error('Erro ao remover aluno:', error);
-      alert('Erro ao remover aluno');
-    });
-  }
-}

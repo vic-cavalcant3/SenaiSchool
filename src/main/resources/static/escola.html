@@ -197,14 +197,12 @@
             <tr>
                 <th>Nome</th>
                 <th>Email</th>
-              
                 <th>Telefone</th>
-             <!-- <th>Endereço</th>
-                <th>Ações</th> -->
+        
             </tr>
             </thead>
             <tbody id="escola-tbody">
-            <!-- Dados das escolas serão inseridos aqui via JavaScript -->
+            <!-- Dados  -->
             </tbody>
         </table>
     </div>
@@ -233,7 +231,6 @@
               const tr = document.createElement('tr');
               tr.innerHTML = `
                 <td>${escola.nome}</td>
-                <td>${escola.endereco}</td>
                 <td>${escola.telefone}</td>
                 <td>${escola.email}</td>
                 <td>
@@ -257,7 +254,6 @@
 
         const escola = {
           nome: document.getElementById('nome').value,
-          endereco: document.getElementById('endereco').value,
           telefone: document.getElementById('telefone').value,
           email: document.getElementById('email').value
         };
