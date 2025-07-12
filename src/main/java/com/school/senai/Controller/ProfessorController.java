@@ -14,10 +14,13 @@ public class ProfessorController {
     public ProfessorController(ProfessorService service) {
         this.service = service;
     }
+
+
     @GetMapping
     public List<Professor> buscarProfessor(){
         return service.listarTodos();
     }
+
     @PostMapping
     public Professor salvarNovoProfessor(@RequestBody Professor professor){
         return service.salvar(professor);
@@ -34,14 +37,14 @@ public class ProfessorController {
         }
 
     @PutMapping("/{id}")
-    public Professor atualizarProfessor(@PathVariable Long id, @RequestBody Professor ProfessorAtualizado){
+    public Professor atualizarProfessor(@PathVariable Long id, @RequestBody Professor professorAtualizado){
         Professor professorExistente = service.buscarPorId(id);
         if(professorExistente == null) return null;
 
-        professorExistente.setNome(ProfessorAtualizado.getNome());
-        professorExistente.setEmail(ProfessorAtualizado.getEmail());
-        professorExistente.setTelefone(ProfessorAtualizado.getTelefone());
-        return service.salvar(professorExistente);
+        professorExistente.setNome(professorAtualizado.getNome());
+        professorExistente.setEmail(professorAtualizado.getEmail());
+        professorExistente.setTelefone(professorAtualizado.getTelefone());
+        return service.salvar(professorAtualizado);
 
     }
 

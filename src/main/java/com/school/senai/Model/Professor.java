@@ -1,14 +1,18 @@
 package com.school.senai.Model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+@Entity
 public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String email;
+    private String telefone;
 
     public Long getId() {
         return id;
@@ -41,7 +45,4 @@ public class Professor {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
-    private String email;
-    private String telefone;
 }

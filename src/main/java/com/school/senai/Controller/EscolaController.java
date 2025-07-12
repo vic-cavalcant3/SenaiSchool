@@ -14,10 +14,13 @@ public class EscolaController {
     public EscolaController(EscolaService service) {
         this.service = service;
     }
+
+
     @GetMapping
     public List<Escola> buscarEscola(){
         return service.listarTodos();
     }
+
     @PostMapping
     public Escola salvarNovaEscola(@RequestBody Escola escola){
         return service.salvar(escola);
@@ -34,14 +37,14 @@ public class EscolaController {
     }
 
     @PutMapping("/{id}")
-    public Escola atualizarEscola(@PathVariable Long id, @RequestBody Escola EscolaAtualizada){
+    public Escola atualizarEscola(@PathVariable Long id, @RequestBody Escola escolaAtualizado){
         Escola escolaExistente = service.buscarPorId(id);
         if(escolaExistente == null) return null;
 
-        escolaExistente.setNome(EscolaAtualizada.getNome());
-        escolaExistente.setEmail(EscolaAtualizada.getEmail());
-        escolaExistente.setTelefone(EscolaAtualizada.getTelefone());
-        return service.salvar(escolaExistente);
+        escolaExistente.setNome(escolaAtualizado.getNome());
+        escolaExistente.setEmail(escolaAtualizado.getEmail());
+        escolaExistente.setTelefone(escolaAtualizado.getTelefone());
+        return service.salvar(escolaAtualizado);
 
     }
 
