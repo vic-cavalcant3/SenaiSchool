@@ -217,10 +217,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('professor-form');
     const tbody = document.getElementById('professor-tbody');
 
-    // Carregar professores
+    // Função para carregar alunos
     function carregarProfessores() {
       fetch('http://localhost:8080/professores')
         .then(response => response.json())
@@ -247,56 +246,58 @@
         });
     }
 
-    // Adicionar novo professor
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+    // Função para remover aluno
+    window.removerProfessor = function(id) {
+      if (confirm("Tem certeza que deseja remover este aluno?")) {
+        fetch(`http://localhost:8080/professores/${id}`, {
+          method: 'DELETE'
+        })
+        .then(() => {
+          alert("Professor removido com sucesso!");
+          carregarProfessores();
+        })
+        .catch(error => {
+          console.error("Erro ao remover Professor:", error);
+          alert("Erro ao remover Professor");
+        });
+      }
+    };
 
-      const professor = {
-        nome: document.getElementById('nome').value,
-        email: document.getElementById('email').value,
-        telefone: document.getElementById('telefone').value,
-      };
+<!--    // Adicionar novo aluno-->
+<!--    const form = document.getElementById('professor-form');-->
+<!--    if (form) {-->
+<!--      form.addEventListener('submit', (e) => {-->
+<!--        e.preventDefault();-->
 
-      fetch('http://localhost:8080/professores', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(professor)
-      })
-      .then(response => response.json())
-      .then(() => {
-        alert('Professor cadastrado com sucesso!');
-        form.reset();
-        carregarProfessores();
-      })
-      .catch(error => {
-        console.error('Erro ao cadastrar professor:', error);
-        alert('Erro ao cadastrar professor');
-      });
-    });
+<!--        const professor = {-->
+<!--          nome: document.getElementById('nome').value,-->
+<!--          email: document.getElementById('email').value,-->
+<!--          telefone: document.getElementById('telefone').value,-->
+<!--        };-->
 
-    // Carregar professores ao iniciar
-    carregarProfessores();
-  });
-
-  // Função para remover professor
-  function removerProfessor(id) {
-    if (confirm('Tem certeza que deseja remover este professor?')) {
-      fetch(`http://localhost:8080/professores/${id}`, {
-        method: 'DELETE'
-      })
-      .then(() => {
-        alert('Professor removido com sucesso!');
-        document.getElementById('professor-tbody').innerHTML = '';
-        carregarProfessores();
-      })
-      .catch(error => {
-        console.error('Erro ao remover professor:', error);
-        alert('Erro ao remover professor');
+        fetch('http://localhost:8080/professores', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(professor)
+        })
+        .then(response => response.json())
+        .then(() => {
+          alert('Professor cadastrado com sucesso!');
+          form.reset();
+          carregarProfessores();
+        })
+        .catch(error => {
+          console.error('Erro ao cadastrar professor:', error);
+          alert('Erro ao cadastrar professor');
+        });
       });
     }
-  }
+
+    // Carrega os alunos assim que a página abre
+    carregarProfessores();
+  });
 </script>
 </body>
 </html>
