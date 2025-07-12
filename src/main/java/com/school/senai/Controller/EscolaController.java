@@ -1,14 +1,13 @@
 package com.school.senai.Controller;
 
 import com.school.senai.Model.Escola;
-import com.school.senai.Model.Professor;
 import com.school.senai.Service.EscolaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/escola")
+@RequestMapping("/escolas")
 public class EscolaController {
     private final EscolaService service;
 

@@ -1,9 +1,7 @@
 package com.school.senai.Service;
 
 import com.school.senai.Interface.EscolaRepository;
-import com.school.senai.Interface.ProfessorRepository;
 import com.school.senai.Model.Escola;
-import com.school.senai.Model.Professor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

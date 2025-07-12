@@ -1,8 +1,6 @@
 package com.school.senai.Controller;
 
-import com.school.senai.Model.Aluno;
 import com.school.senai.Model.Professor;
-import com.school.senai.Service.AlunoService;
 import com.school.senai.Service.ProfessorService;
 import org.springframework.web.bind.annotation.*;
 
