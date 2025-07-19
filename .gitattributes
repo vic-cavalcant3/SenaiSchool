@@ -1,2 +1,5 @@
 /mvnw text eol=lf
 *.cmd text eol=crlf
+
+# Ignorar HTML na contagem de linguagens do GitHub
+*.html linguist-detectable=false
